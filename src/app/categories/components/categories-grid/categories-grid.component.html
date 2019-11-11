@@ -1,0 +1,28 @@
+<h1>Categorias</h1>
+
+<button type="button" class="btn btn-success btn-sm">Adicionar</button>
+
+<table class="table table-hover table-sm table-bordered categories" *ngIf="categories.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of categories">
+      <td scope="row">{{c.id}}</td>
+      <td [routerLink]="['categories/' + c.id + '/lists']">{{c.name}}</td>
+      <td>
+        <button type="button" class="btn btn-info btn-sm">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="excluirCategoria(c.id)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="categories.length === 0">
+  <h1>Nenhum Registro Encontrado!</h1>
+</div>
+

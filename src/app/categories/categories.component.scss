@@ -1,0 +1,19 @@
+.categories{
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+
+    tbody{
+        td{
+            cursor: pointer;
+
+            &:last-child{
+              display: inline-flex;
+              button{
+                margin: 0 5px;
+              }
+            }
+        }
+    }
+
+}

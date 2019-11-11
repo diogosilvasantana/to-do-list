@@ -1,0 +1,29 @@
+<h1>Listas</h1>
+
+<button type="button" class="btn btn-success btn-sm">Adicionar</button>
+
+<table class="table table-hover table-sm table-bordered categories" *ngIf="list.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let l of list" [routerLink]="[l.id + '/items']">
+      <td scope="row">{{l.id}}</td>
+      <td>{{l.name}}</td>
+      <td>
+        <button type="button" class="btn btn-info btn-sm">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="excluirategoria(c.id)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="list.length === 0">
+  <h1>Nenhum Registro Encontrado!</h1>
+</div>
+
+<button type="button" class="btn btn-info btn-sm" (click)="goBack()">Voltar</button>
