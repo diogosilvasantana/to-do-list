@@ -5,8 +5,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategoriesConfirmDialogComponent } from './components/categories-confirm-dialog/categories-confirm-dialog.component';
 import { CategoriesFormComponent } from './components/categories-form/categories-form.component';
 
-import {MatIconRegistry} from '@angular/material/icon';
-
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -64,13 +62,16 @@ export class CategoriesComponent implements OnInit {
       this.categoriesService.postCategories(categoria).subscribe(result => {
         const modalRef = this.modalService.open(CategoriesConfirmDialogComponent);
         modalRef.componentInstance.sucesso = true;
-        if (result) {
           modalRef.componentInstance.tituloModal = `Categoria salva com sucesso!`;
           modalRef.componentInstance.conteudoModal = `A categoria foi salva com sucesso!`;
-        } else {
+      }, error => {
+        setTimeout(() => {
+          const modalRef = this.modalService.open(CategoriesConfirmDialogComponent);
+          modalRef.componentInstance.sucesso = true;
           modalRef.componentInstance.tituloModal = `Erro!`;
-          modalRef.componentInstance.conteudoModal = `Ouve um erro ao tentar atualizar a categoria. Tente novamente ou contate o administrador do sistema.`;
-        }
+          modalRef.componentInstance.conteudoModal = `
+          Ouve um erro ao tentar salvar a categoria. Tente novamente ou contate o administrador do sistema. Código do erro: ${error.status} - ${error.statusText}`;
+        }, 1000)
       })
     })
   }
@@ -87,13 +88,16 @@ export class CategoriesComponent implements OnInit {
         .subscribe(result => {
           const modalRef = this.modalService.open(CategoriesConfirmDialogComponent);
           modalRef.componentInstance.sucesso = true;
-          if (result) {
             modalRef.componentInstance.tituloModal = `Categoria atualizada com sucesso!`;
             modalRef.componentInstance.conteudoModal = `A categoria foi excluída com sucesso!`;
-          } else {
+        }, error => {
+          setTimeout(() => {
+            const modalRef = this.modalService.open(CategoriesConfirmDialogComponent);
+            modalRef.componentInstance.sucesso = true;
             modalRef.componentInstance.tituloModal = `Erro!`;
-            modalRef.componentInstance.conteudoModal = `Ouve um erro ao tentar atualizar a categoria. Tente novamente ou contate o administrador do sistema.`;
-          }
+            modalRef.componentInstance.conteudoModal = `
+            Ouve um erro ao tentar atualizar a categoria. Tente novamente ou contate o administrador do sistema. Código do erro: ${error.status} - ${error.statusText}`;
+          }, 1000)
         })
     })
   }
@@ -127,6 +131,12 @@ export class CategoriesComponent implements OnInit {
                   modalRef.componentInstance.tituloModal = `Erro!`;
                   modalRef.componentInstance.conteudoModal = `Ouve um erro ao tentar excluir a categoria. Tente novamente ou contate o administrador do sistema.`;
                 }
+              }, error => {
+                  const modalRef = this.modalService.open(CategoriesConfirmDialogComponent);
+                  modalRef.componentInstance.sucesso = true;
+                  modalRef.componentInstance.tituloModal = `Erro!`;
+                  modalRef.componentInstance.conteudoModal = `
+                  Ouve um erro ao tentar excluir a categoria. Tente novamente ou contate o administrador do sistema. Código do erro: ${error.status} - ${error.statusText}`;
               })
           }, 1000);
 

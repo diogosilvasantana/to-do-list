@@ -40,8 +40,8 @@ export class CategoriesListsFormComponent implements OnInit {
   public salvar() {
     const modalRef = this.modalService.open(CategoriesListsConfirmDialogComponent);
     modalRef.componentInstance.sucesso = false;
-    modalRef.componentInstance.tituloModal = `Salvar Categoria`;
-    modalRef.componentInstance.conteudoModal = `Tem certeza que deseja salvar a categoria "${this.listaForm.get('name').value}"?`;
+    modalRef.componentInstance.tituloModal = `Salvar Lista`;
+    modalRef.componentInstance.conteudoModal = `Tem certeza que deseja salvar a lista "${this.listaForm.get('name').value}"?`;
 
     modalRef.componentInstance.dialogConfirm
       .subscribe((confirmar) => {
@@ -62,8 +62,8 @@ export class CategoriesListsFormComponent implements OnInit {
   public atualizar() {
     const modalRef = this.modalService.open(CategoriesListsConfirmDialogComponent);
     modalRef.componentInstance.sucesso = false;
-    modalRef.componentInstance.tituloModal = `Excluir Categoria`;
-    modalRef.componentInstance.conteudoModal = `Tem certeza que deseja atualizar a categoria "${this.lista.name}" para "${this.listaForm.get('name').value}"?`;
+    modalRef.componentInstance.tituloModal = `Atualizar Lista`;
+    modalRef.componentInstance.conteudoModal = `Tem certeza que deseja atualizar a lista "${this.lista.name}" para "${this.listaForm.get('name').value}"?`;
 
     modalRef.componentInstance.dialogConfirm
       .subscribe((confirmar) => {

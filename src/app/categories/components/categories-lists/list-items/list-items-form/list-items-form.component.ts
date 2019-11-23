@@ -42,7 +42,7 @@ export class ListItemsFormComponent implements OnInit {
   public salvar() {
     const modalRef = this.modalService.open(ListItemsConfirmDialogComponent);
     modalRef.componentInstance.sucesso = false;
-    modalRef.componentInstance.tituloModal = `Salvar Categoria`;
+    modalRef.componentInstance.tituloModal = `Salvar Item`;
     modalRef.componentInstance.conteudoModal = `Tem certeza que deseja salvar o item "${this.itemForm.get('name').value}"?`;
 
     modalRef.componentInstance.dialogConfirm

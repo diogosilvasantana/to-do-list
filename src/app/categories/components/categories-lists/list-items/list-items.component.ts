@@ -60,13 +60,16 @@ export class ListItemsComponent implements OnInit {
       this.itemsService.postItem(this.idCategory, this.idList, item).subscribe(result => {
         const modalRef = this.modalService.open(ListItemsConfirmDialogComponent);
         modalRef.componentInstance.sucesso = true;
-        if (result) {
           modalRef.componentInstance.tituloModal = `Item salvo com sucesso!`;
           modalRef.componentInstance.conteudoModal = `O item foi salva com sucesso!`;
-        } else {
+      }, error => {
+        setTimeout(() => {
+          const modalRef = this.modalService.open(ListItemsConfirmDialogComponent);
+          modalRef.componentInstance.sucesso = true;
           modalRef.componentInstance.tituloModal = `Erro!`;
-          modalRef.componentInstance.conteudoModal = `Ouve um erro ao tentar salvar o item. Tente novamente ou contate o administrador do sistema.`;
-        }
+          modalRef.componentInstance.conteudoModal = `
+          Ouve um erro ao tentar salvar o item. Tente novamente ou contate o administrador do sistema. Código do erro: ${error.status} - ${error.statusText}`;
+        }, 1000)
       })
     })
   }
@@ -88,13 +91,16 @@ export class ListItemsComponent implements OnInit {
         .subscribe(result => {
           const modalRef = this.modalService.open(ListItemsConfirmDialogComponent);
           modalRef.componentInstance.sucesso = true;
-          if (result) {
             modalRef.componentInstance.tituloModal = `Item atualizada com sucesso!`;
             modalRef.componentInstance.conteudoModal = `O item foi atualizada com sucesso!`;
-          } else {
+        }, error => {
+          setTimeout(() => {
+            const modalRef = this.modalService.open(ListItemsConfirmDialogComponent);
+            modalRef.componentInstance.sucesso = true;
             modalRef.componentInstance.tituloModal = `Erro!`;
-            modalRef.componentInstance.conteudoModal = `Ouve um erro ao tentar atualizar a categoria. Tente novamente ou contate o administrador do sistema.`;
-          }
+            modalRef.componentInstance.conteudoModal = `
+            Ouve um erro ao tentar atualizar o item. Tente novamente ou contate o administrador do sistema. Código do erro: ${error.status} - ${error.statusText}`;
+          }, 1000)
         })
     })
   }
@@ -120,16 +126,17 @@ export class ListItemsComponent implements OnInit {
                 this.loading = false;
                 const modalRef = this.modalService.open(ListItemsConfirmDialogComponent);
                 modalRef.componentInstance.sucesso = true;
-                if (result) {
                   modalRef.componentInstance.tituloModal = `Item Excluido com Sucesso!`;
                   modalRef.componentInstance.conteudoModal = `O item "${item.name}" foi excluída com sucesso!`;
-                } else {
+              }, error => {
+                setTimeout(() => {
+                  const modalRef = this.modalService.open(ListItemsConfirmDialogComponent);
+                  modalRef.componentInstance.sucesso = true;
                   modalRef.componentInstance.tituloModal = `Erro!`;
-                  modalRef.componentInstance.conteudoModal = `Ouve um erro ao tentar excluir a categoria. Tente novamente ou contate o administrador do sistema.`;
-                }
+                  modalRef.componentInstance.conteudoModal = `
+                  Ouve um erro ao tentar excluir o item. Tente novamente ou contate o administrador do sistema. Código do erro: ${error.status} - ${error.statusText}`;
+                }, 1000)
               })
-
-
         }
       })
   }

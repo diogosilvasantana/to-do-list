@@ -9,10 +9,10 @@
       </div>
       
       <div class="modal-footer" *ngIf="!sucesso">
-        <button type="button" class="btn btn-outline-dark" (click)="confirmar()">Sim</button>
-        <button type="button" class="btn btn-outline-dark" (click)="fechar()">Não</button>
+        <button type="button" class="btn btn-success" (click)="confirmar()">Sim</button>
+        <button type="button" class="btn btn-danger" (click)="fechar()">Não</button>
       </div>
       
       <div class="modal-footer" *ngIf="sucesso">
-        <button type="button" class="btn btn-outline-dark" (click)="fechar()">Fechar</button>
+        <button type="button" class="btn btn-danger" (click)="fechar()">Fechar</button>
       </div>

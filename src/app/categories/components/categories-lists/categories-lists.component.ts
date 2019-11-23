@@ -66,13 +66,16 @@ export class CategoriesListsComponent implements OnInit {
       this.listService.postList(this.idCategory, lista).subscribe(result => {
         const modalRef = this.modalService.open(CategoriesListsConfirmDialogComponent);
         modalRef.componentInstance.sucesso = true;
-        if (result) {
           modalRef.componentInstance.tituloModal = `Lista salva com sucesso!`;
           modalRef.componentInstance.conteudoModal = `A lista foi salva com sucesso!`;
-        } else {
+      }, error => {
+        setTimeout(() => {
+          const modalRef = this.modalService.open(CategoriesListsConfirmDialogComponent);
+          modalRef.componentInstance.sucesso = true;
           modalRef.componentInstance.tituloModal = `Erro!`;
-          modalRef.componentInstance.conteudoModal = `Ouve um erro ao tentar salvar a lista. Tente novamente ou contate o administrador do sistema.`;
-        }
+          modalRef.componentInstance.conteudoModal = `
+          Ouve um erro ao tentar salvar a lista. Tente novamente ou contate o administrador do sistema. Código do erro: ${error.status} - ${error.statusText}`;
+        }, 1000)
       })
     })
   }
@@ -94,13 +97,16 @@ export class CategoriesListsComponent implements OnInit {
         .subscribe(result => {
           const modalRef = this.modalService.open(CategoriesListsConfirmDialogComponent);
           modalRef.componentInstance.sucesso = true;
-          if (result) {
             modalRef.componentInstance.tituloModal = `Lista atualizada com sucesso!`;
             modalRef.componentInstance.conteudoModal = `A lista foi atualizada com sucesso!`;
-          } else {
+        }, error => {
+          setTimeout(() => {
+            const modalRef = this.modalService.open(CategoriesListsConfirmDialogComponent);
+            modalRef.componentInstance.sucesso = true;
             modalRef.componentInstance.tituloModal = `Erro!`;
-            modalRef.componentInstance.conteudoModal = `Ouve um erro ao tentar atualizar a categoria. Tente novamente ou contate o administrador do sistema.`;
-          }
+            modalRef.componentInstance.conteudoModal = `
+            Ouve um erro ao tentar atualizar a lista. Tente novamente ou contate o administrador do sistema. Código do erro: ${error.status} - ${error.statusText}`;
+          }, 1000)
         })
     })
   }
@@ -134,6 +140,14 @@ export class CategoriesListsComponent implements OnInit {
                 modalRef.componentInstance.tituloModal = `Erro!`;
                 modalRef.componentInstance.conteudoModal = `Ouve um erro ao tentar excluir a categoria. Tente novamente ou contate o administrador do sistema.`;
               }
+            }, error => {
+              setTimeout(() => {
+                const modalRef = this.modalService.open(CategoriesListsConfirmDialogComponent);
+                modalRef.componentInstance.sucesso = true;
+                modalRef.componentInstance.tituloModal = `Erro!`;
+                modalRef.componentInstance.conteudoModal = `
+                Ouve um erro ao tentar excluir a lista. Tente novamente ou contate o administrador do sistema. Código do erro: ${error.status} - ${error.statusText}`;
+              }, 1000)
             })
         }
       })
