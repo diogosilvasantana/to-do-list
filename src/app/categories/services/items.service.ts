@@ -24,19 +24,19 @@ export class ItemsService {
     return this.http.get<ItemsModel>(`${API}/categories/${idCategory}/lists/${idList}/items/${idItem}`)
   }
 
-  // INSERIR NOVA CATEGORIA 
-  public postItem(data): Observable<ItemsModel>{
-    return this.http.post<ItemsModel>(`${API}/categories`, data)
+  // INSERIR NOVO ITEM 
+  public postItem(idCategory: string, idList: string, data): Observable<ItemsModel>{
+    return this.http.post<ItemsModel>(`${API}/categories/${idCategory}/lists/${idList}/items`, data)
   }
 
-  // ATUALIZAR CATEGORIA
-  public updateItem(id, data): Observable<ItemsModel>{
-    return this.http.put<ItemsModel>(`${API}/categories/${id}`, data)
+  // ATUALIZAR ITEM
+  public updateItem(idCategory: string, idList: string, idItem: string, data): Observable<ItemsModel>{
+    return this.http.put<ItemsModel>(`${API}/categories/${idCategory}/lists/${idList}/items/${idItem}`, data)
   }
 
-  // EXCLUIR CATEGORIA
-  public deleteItem(id): Observable<ItemsModel>{
-    return this.http.delete<ItemsModel>(`${API}/categories/${id}`)
+  // EXCLUIR ITEM
+  public deleteItem(idCategory: string, idList: string, idItem: string): Observable<ItemsModel>{
+    return this.http.delete<ItemsModel>(`${API}/categories/${idCategory}/lists/${idList}/items/${idItem}`)
   }
 
 }

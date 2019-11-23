@@ -1,5 +1,5 @@
 export class ListModel {
-    id: Number;
-    itemId: Number;
-    name: String
+    id: number;
+    itemId: string;
+    name: string;
 }

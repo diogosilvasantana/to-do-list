@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CategoriesModel } from '../../models/categories';
-import { CategoriesService } from '../../services/categories.service';
 
 @Component({
   selector: 'app-categories-grid',
@@ -9,17 +8,22 @@ import { CategoriesService } from '../../services/categories.service';
 })
 export class CategoriesGridComponent implements OnInit {
 
-  @Input() categories: CategoriesModel[];
+  @Input() listaCategorias: CategoriesModel[];
+  @Output() editarCategoria = new EventEmitter();
+  @Output() excluirCategoria = new EventEmitter();
 
-  constructor(private categoriesService: CategoriesService) { }
+  public itensPorPagina = 5;
+
+  constructor() { }
 
   ngOnInit() {
-
   }
 
-  public excluirCategoria(id): void{
-    this.categoriesService.deleteCategories(id).subscribe(result => {
-      console.log(result)
-  })
+  public editar(categoria){
+    this.editarCategoria.emit(categoria)
+  }
+
+  public excluir(categoria){
+    this.excluirCategoria.emit(categoria)
   }
 }

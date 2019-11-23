@@ -15,28 +15,28 @@ export class ListService {
   constructor(private http: HttpClient) { }
 
   // LISTAR
-  public getList(id: string): Observable<ListModel[]> {
-    return this.http.get<ListModel[]>(`${API}/categories/${id}/lists`)
+  public getList(idCategory: string): Observable<ListModel[]> {
+    return this.http.get<ListModel[]>(`${API}/categories/${idCategory}/lists`)
   }
 
   // BUSCAR POR ID
-  public getListById(id: String): Observable<ListModel> {
-    return this.http.get<ListModel>(`${API}/categories/${id}`)
+  public getListById(idCategory: string, idList: string): Observable<ListModel> {
+    return this.http.get<ListModel>(`${API}/categories/${idCategory}/lists/${idList}`)
   }
 
   // INSERIR NOVA CATEGORIA 
-  public postList(data): Observable<ListModel>{
-    return this.http.post<ListModel>(`${API}/categories`, data)
+  public postList(idCategory: string, data): Observable<ListModel>{
+    return this.http.post<ListModel>(`${API}/categories/${idCategory}/lists`, data)
   }
 
   // ATUALIZAR CATEGORIA
-  public updateList(id, data): Observable<ListModel>{
-    return this.http.put<ListModel>(`${API}/categories/${id}`, data)
+  public updateList(idCategory: string, idList: string, data): Observable<ListModel>{
+    return this.http.put<ListModel>(`${API}/categories/${idCategory}/lists/${idList}`, data)
   }
 
   // EXCLUIR CATEGORIA
-  public deleteList(id): Observable<ListModel>{
-    return this.http.delete<ListModel>(`${API}/categories/${id}`)
+  public deleteList(idCategory: string, idList: string): Observable<ListModel>{
+    return this.http.delete<ListModel>(`${API}/categories/${idCategory}/lists/${idList}`)
   }
 
 }

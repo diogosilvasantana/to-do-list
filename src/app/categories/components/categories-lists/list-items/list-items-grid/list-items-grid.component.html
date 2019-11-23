@@ -1,29 +1,30 @@
-<h1>Itens</h1>
-
-<button type="button" class="btn btn-success btn-sm">Adicionar</button>
-
-<table class="table table-hover table-sm table-bordered categories" *ngIf="items.length > 0">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let i of items">
-        <td scope="row">{{i.id}}</td>
-        <td>{{i.name}}</td>
-        <td>
-          <button type="button" class="btn btn-info btn-sm">Editar</button>
-          <button type="button" class="btn btn-danger btn-sm" (click)="excluiritem(i.id)">Excluir</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div *ngIf="items.length === 0">
-    <h1>Nenhum Registro Encontrado!</h1>
-  </div>
-
-<button type="button" class="btn btn-info btn-sm" (click)="goBack()">Voltar</button>
+<table class="table table-sm table table-striped categories">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Feito</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of items">
+      <td scope="row">{{i.id}}</td>
+      <td>{{i.name}}</td>
+      <td>
+        <mat-icon class="text-success" *ngIf="i.done == true">thumb_up_alt</mat-icon>
+        <mat-icon class="text-danger" *ngIf="i.done == false">thumb_down_alt</mat-icon>
+      </td>
+      <td>
+        <button type="button" class="btn btn-info btn-sm" (click)="editar(i)">
+          <mat-icon>edit</mat-icon>
+          <span>Editar</span>
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="excluir(i)">
+          <mat-icon>delete_forever</mat-icon>
+          <span>Excluir</span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

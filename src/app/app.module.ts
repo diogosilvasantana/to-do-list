@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesListsComponent } from './categories/components/categories-lists/categories-lists.component';
 import { ListItemsComponent } from './categories/components/categories-lists/list-items/list-items.component';
@@ -17,7 +17,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { CategoriesFormComponent } from './categories/components/categories-form/categories-form.component';
+import { CategoriesModalComponent } from './categories/components/categories-modal/categories-modal.component';
+import { ModalDialogComponent } from './globalComponents/modal/modal-dialog/modal-dialog.component';
+import { CategoriesConfirmDialogComponent } from './categories/components/categories-confirm-dialog/categories-confirm-dialog.component';
+import { CategoriesListsFormComponent } from './categories/components/categories-lists/categories-lists-form/categories-lists-form.component';
+import { CategoriesListsConfirmDialogComponent } from './categories/components/categories-lists/categories-lists-confirm-dialog/categories-lists-confirm-dialog.component';
+import { ListItemsConfirmDialogComponent } from './categories/components/categories-lists/list-items/list-items-confirm-dialog/list-items-confirm-dialog.component';
+import { ListItemsFormComponent } from './categories/components/categories-lists/list-items/list-items-form/list-items-form.component';
+import { MatIconModule } from '@angular/material/icon'
 
 
 @NgModule({
@@ -28,7 +36,15 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ListItemsComponent,
     CategoriesGridComponent,
     CategoriesListsGridComponent,
-    ListItemsGridComponent
+    ListItemsGridComponent,
+    CategoriesFormComponent,
+    CategoriesModalComponent,
+    ModalDialogComponent,
+    CategoriesConfirmDialogComponent,
+    CategoriesListsFormComponent,
+    CategoriesListsConfirmDialogComponent,
+    ListItemsConfirmDialogComponent,
+    ListItemsFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,9 +56,21 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     NgbModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule
   ],
-  providers: [],
+  exports: [CategoriesComponent],
+  entryComponents: [
+    CategoriesModalComponent, 
+    CategoriesFormComponent,
+    CategoriesConfirmDialogComponent,
+    CategoriesListsConfirmDialogComponent,
+    CategoriesListsConfirmDialogComponent,
+    CategoriesListsFormComponent,
+    ListItemsFormComponent,
+    ListItemsConfirmDialogComponent
+  ],
+  providers: [NgbActiveModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

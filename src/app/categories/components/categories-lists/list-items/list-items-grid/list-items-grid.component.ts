@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ItemsModel } from 'src/app/categories/models/items';
 
 @Component({
@@ -9,14 +9,22 @@ import { ItemsModel } from 'src/app/categories/models/items';
 export class ListItemsGridComponent implements OnInit {
 
   @Input() items: ItemsModel[];
+  @Output() editarItem = new EventEmitter();
+  @Output() excluirItem = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  public goBack(): void {
-    window.history.back()
+  public editar(item){
+    this.editarItem.emit(item)
   }
+
+  public excluir(item){
+    this.excluirItem.emit(item)
+  }
+
+
 
 }

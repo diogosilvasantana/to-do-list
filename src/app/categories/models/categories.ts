@@ -1,4 +1,5 @@
 export class CategoriesModel {
-    id?: Number;
-    name: String;
+    id?: number;
+    name: string;
+    observe?: string;
 }

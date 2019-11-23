@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{tituloModal}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="fechar()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" >
+    <div class="text-center loading" *ngIf="loading" style="position: relative; margin-top: 60px">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+        </div>
+        <p>Aguarde, Salvando...</p>
+      </div>
+  <form *ngIf="!loading">
+    <div [formGroup]="categoriaForm" class="form-group">
+      <label for="categoria">Nome da Categoria</label>
+      <input formControlName="name" name="categoriaName" class="form-control" placeholder="Digite o nome da categoria">
+    </div>
+    <button type="submit" class="btn btn-success" *ngIf="!editar" (click)="salvar()">Salvar</button>
+    <button type="submit" class="btn btn-success" *ngIf="editar" (click)="atualizar()">Atualizar</button>
+    <button type="submit" class="btn ml-2 btn-outline-dark" (click)="fechar()">Fechar</button>
+  </form>
+  
+</div>
+

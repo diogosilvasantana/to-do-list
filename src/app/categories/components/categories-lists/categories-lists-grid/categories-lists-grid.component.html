@@ -1,8 +1,4 @@
-<h1>Listas</h1>
-
-<button type="button" class="btn btn-success btn-sm">Adicionar</button>
-
-<table class="table table-hover table-sm table-bordered categories" *ngIf="list.length > 0">
+<table class="table table-hover table-sm table table-striped categories" *ngIf="list.length > 0">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -11,19 +7,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let l of list" [routerLink]="[l.id + '/items']">
+    <tr *ngFor="let l of list">
       <td scope="row">{{l.id}}</td>
-      <td>{{l.name}}</td>
+      <td [routerLink]="[l.id + '/items']">{{l.name}}</td>
       <td>
-        <button type="button" class="btn btn-info btn-sm">Editar</button>
-        <button type="button" class="btn btn-danger btn-sm" (click)="excluirategoria(c.id)">Excluir</button>
+        <button type="button" class="btn btn-info btn-sm" (click)="editar(l)">
+          <mat-icon>edit</mat-icon>
+          <span>Editar</span>
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="excluir(l)">
+          <mat-icon>delete_forever</mat-icon>
+          <span>Excluir</span>
+        </button>
       </td>
     </tr>
   </tbody>
 </table>
-
-<div *ngIf="list.length === 0">
-  <h1>Nenhum Registro Encontrado!</h1>
-</div>
-
-<button type="button" class="btn btn-info btn-sm" (click)="goBack()">Voltar</button>
