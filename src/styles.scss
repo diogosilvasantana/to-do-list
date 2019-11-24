@@ -2,7 +2,9 @@
 
 html,
 body {
-  height: 100%;
+  margin: 0;
+padding: 0;
+height: 100%;
 }
 body {
   margin: 0;
@@ -15,8 +17,16 @@ body {
   width: 100%;
   display: block;
   text-align: center;
+
+  @media (max-width: 768px){
+    padding-top: 30px;
+  }
   img {
     width: 10%;
+
+    @media (max-width: 768px){
+      width: 25%;
+    }
   }
 }
 
@@ -126,7 +136,7 @@ body {
   span {
     margin: auto;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       display: none;
 
       &.voltar {
@@ -139,6 +149,11 @@ body {
 h1 {
   color: #fff;
   font-size: 35px;
+
+  @media (max-width: 768px){
+    font-size: 30px;
+    margin-top: 20px;
+  }
 }
 
 .card {
@@ -160,4 +175,27 @@ h1 {
 .paragrafo {
   color: #fff;
   font-size: 17px;
+
+  @media (max-width: 768px){
+    font-size: 15px;
+  }
 }
+
+.topo {
+  @media(max-width: 768px){
+    text-align: center;
+  }
+}
+
+.modal-content {
+  margin-top: 30%;
+
+  @media (max-width: 768px){
+    margin-top: 50%;
+  }
+}
+
+.container {
+  padding-bottom: 50px;
+}
+
