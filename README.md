@@ -19,8 +19,5 @@ Após instalado, execute `ng serve` ou apenas `ng s` para iniciar a aplicação.
 ## Desenvolvido por:
 Diogo da Silva Santana
 
-## Informações de contato:
-Telefone: (11) 94273-7923
-
 ## LinkedIn
 https://linkedin.com/in/diogosilvasantana
