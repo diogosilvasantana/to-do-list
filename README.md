@@ -1,6 +1,6 @@
 # To-do-list - Teste Front End (Alelo)
 
-Este projeto foi desenvolvido com o Angular verrsão 8.2.1 (https://github.com/angular/angular-cli).
+Este projeto foi desenvolvido com o Angular versão 8.2.1 (https://github.com/angular/angular-cli).
 
 ## Baixando a aplicação (Requer Git instalado)
 
